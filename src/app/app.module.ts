@@ -16,12 +16,15 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CountryComponent } from './pages/country/country.component';
+import { AssistanceComponent } from './pages/assistance/assistance.component';
+
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CountupComponent } from './shared/countup/countup.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { AssistanceComponent } from './pages/assistance/assistance.component';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   };

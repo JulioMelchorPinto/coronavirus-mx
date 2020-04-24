@@ -57,6 +57,11 @@
       </div>
     </div>
   </div>
+
+<h2 class="text-center mt-2 mb-2">Estad&iacute;stica mundial</h2>
+
+
+  
   <div class="row">
     <div class="col-xl-3 col-md-6 col-6">
       <div class="card-box">
@@ -161,7 +166,6 @@
 
   </div>
 
-
   <div class="row">
     <div class="col-xl-4">
       <div class="card-box">
@@ -216,6 +220,7 @@
     </div><!-- end col -->
 
     <div class="col-xl-8">
+      <div class="card">
       <div class="card-box">
         <div class="float-md-right float-right d-md-inline d-none">
           <button type="button" class="btn btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-1 mr-0"
@@ -227,7 +232,7 @@
           <button type="button" class="btn btn-xs btn-lighten-warning waves-effect waves-light width-xs"
             (click)="loadMap('critical')">Graves</button>
         </div>
-        <h4 class="header-title mt-0 mb-3 mt-md-0">Infeccion Mundial <button type="button" class="btn btn-xs btn-lighten-secondary waves-effect waves-light width-xs mr-md-1 mr-0"
+        <h4 class="header-title mt-0 mb-3 mt-md-0">Mapa de Infecci&oacute;n <button type="button" class="btn btn-xs btn-lighten-secondary waves-effect waves-light width-xs mr-md-1 mr-0"
           (click)="showModal();">Como prevenir?</button></h4>
         <div class="fa-3x text-center" [class.d-none]="!isLoadingMap">
           <i class="fas fa-circle-notch fa-spin m-2"></i>
@@ -237,17 +242,18 @@
         </div>
         <div class="float-right d-md-none d-inline">
           <button type="button"
-            class="btn btn-block btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-1 mr-0"
+            class="btn btn-block btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-0 mr-0"
             (click)="loadMap('cases');">Casos</button>
           <button type="button"
-            class="btn btn-block btn-xs btn-lighten-danger waves-effect waves-light width-xs mr-md-1 mr-0"
+            class="btn btn-block btn-xs btn-lighten-danger waves-effect waves-light width-xs mr-md-0 mr-0"
             (click)="loadMap('deaths')">Muertos</button>
           <button type="button"
-            class="btn btn-block btn-xs btn-lighten-success waves-effect waves-light width-xs mr-md-1 mr-0"
+            class="btn btn-block btn-xs btn-lighten-success waves-effect waves-light width-xs mr-md-0 mr-0"
             (click)="loadMap('recovered')">Recuperados</button>
           <button type="button" class="btn btn-block btn-xs btn-lighten-warning waves-effect waves-light width-xs"
             (click)="loadMap('critical')">Graves</button>
         </div>
+      </div>
       </div>
     </div><!-- end col -->
 

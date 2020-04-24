@@ -1,13 +1,7 @@
 
-<h1 align="center">Bienvenido al repositorio del sitio coronavirus-mx 👋</h1>
+<h1 align="center">Bienvenido al repositorio del sitio coronavirus-mx</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000" />
-    <img alt="Version" src="https://img.shields.io/badge/build-passing-brightgreen" />
-  <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
-  <a href="https://paypal.me/beaverNet" target="_blank">
-    <img alt="Patrocinio" src="https://coronavirus-mx.web.app/assets/images/qr.png" />
   </a>
   <a href="https://twitter.com/MelchorPinto" target="_blank">
     <img alt="Twitter: MelchorPinto" src="https://img.shields.io/twitter/follow/MelchorPinto.svg?style=social" />
@@ -75,20 +69,6 @@ node server.js
 ```
 Edit src/app/core/services/getdata.service.ts and replace with your own api url.
 
-```
-  private host = "https://api.coronastatistics.live"
-```
-
-# API Endpoints
-
-* http://api.coronastatistics.live/all
-* http://api.coronastatistics.live/countries
-* http://api.coronastatistics.live/countries?sort={parameter}
-* http://api.coronastatistics.live/countries/{country_name}
-* http://api.coronastatistics.live/timeline
-* http://api.coronastatistics.live/timeline/global
-* http://api.coronastatistics.live/timeline/{country_name}
-
 ## Author
 
 👤 **Julio Melchor**
@@ -103,4 +83,4 @@ Edit src/app/core/services/getdata.service.ts and replace with your own api url.
 
 Give a ⭐️ if this project helped you!
 
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://paypal.me/beaverNet)
+[![PayPal](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://paypal.me/beaverNet)
