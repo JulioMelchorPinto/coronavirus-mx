@@ -1,7 +1,7 @@
 <!-- Topbar Start -->
-<div class="navbar navbar-expand-sm navbar-toggleable-sm bg-light mb-1 sticky-topbar">
+<nav class="navbar navbar-expand-md navbar-toggleable-md bg-light mb-1 sticky-topbar">
   <div class="container">
-      <a [routerLink]="['/country/mexico']" class="navbar-brand">
+      <a [routerLink]="['/']" class="navbar-brand">
           <img src="assets/images/logo-light.png" height="40" >
       </a>
       <button
@@ -12,24 +12,24 @@
         aria-label="Toggle navigation"
         [attr.aria-expanded]="isExpanded"
         (click)="toggle()" >
-        <span class="navbar-toggler-icon"></span>
+        <i class="far fa-caret-square-down"></i>
       </button>
-      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }" >
+      <div class="navbar-collapse collapse d-md-inline-flex flex-md-row-reverse" [ngClass]="{ show: isExpanded }" >
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }" >
-            <a class="btn btn-md btn-lighten-success waves-effect waves-light width-lg mr-md-1 mr-2 nav-link text-dark" [routerLink]="['/country/mexico']">M&eacute;xico</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }" >
-            <a class="btn btn-md btn-lighten-primary waves-effect waves-light width-lg mr-md-1 mr-2 nav-link text-dark" [routerLink]="['/']">El Mundo</a>
-          </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="btn btn-md btn-lighten-danger waves-effect waves-light width-lg mr-md-1 mr-2 nav-link text-dark" [routerLink]="['/assistance']" >Informaci&oacute;n</a>
+            <a class="btn btn-md btn-outlined-danger waves-effect waves-light width-lg mt-1 mb-1 nav-link text-dark" [routerLink]="['/']" > <i class="fas fa-info-circle mr-1"></i>Informaci&oacute;n</a>
           </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }" >
+            <a class="btn btn-md btn-outlined-success waves-effect waves-light width-lg mt-1 mb-1 nav-link text-dark" [routerLink]="['/country/mexico']"><img width="20" src="assets/flags/mx.svg"> Datos</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }" >
+            <a class="btn btn-md btn-outlined-primary waves-effect waves-light width-lg mt-1 mb-1 nav-link text-dark" [routerLink]="['/dashboard']"><img width="15" src="assets/flags/world.png"> El mundo</a>
+          </li> 
         </ul>
       </div>
 
   </div>  <!-- end container-fluid-->
 
-</div>
+</nav>
 <!-- end Topbar -->
 

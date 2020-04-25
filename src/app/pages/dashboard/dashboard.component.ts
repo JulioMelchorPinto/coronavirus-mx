@@ -46,7 +46,7 @@ am4core.useTheme(am4themes_animated);
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild(PerfectScrollbarComponent) public directiveScroll: PerfectScrollbarComponent;
-  @ViewChild('autoShownModal', { static: false }) autoShownModal: ModalDirective;
+  /* @ViewChild('autoShownModal', { static: false }) autoShownModal: ModalDirective;
   isModalShown = false;
   public modalStep = 1;
   showModal(): void {
@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       localStorage.setItem("dontShow","true");
     }
     this.hideModal();
-  }
+  } */
 
   public fuse: any;
   public fuseResults: any[];
@@ -406,7 +406,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     if(!localStorage.getItem("dontShow")){
-      this.showModal();
+      //this.showModal();
     }
     this.zone.runOutsideAngular(async () => {
       combineLatest(

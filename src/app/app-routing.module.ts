@@ -8,9 +8,9 @@ import { AssistanceComponent } from './pages/assistance/assistance.component';
 
 
 const routes: Routes = [
-  { path: '',  component: DashboardComponent},
+  { path: '', component : AssistanceComponent},
+  { path: 'dashboard',  component: DashboardComponent},
   { path: 'country/:name', component : CountryComponent},
-  { path: 'assistance', component : AssistanceComponent},
   { path: '**', component : NotFoundComponent}
 ];
 

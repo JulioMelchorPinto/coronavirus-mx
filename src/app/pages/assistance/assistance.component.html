@@ -1,8 +1,360 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h1 class="mt-5">Asistencia.</h1>
-            
+  <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal"
+    class="modal fade d-block" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center pt-4">
+
+          <div *ngIf="modalStep == 1" class="modal-step" [@fadeInOutAnimation]>
+            <img src="assets/images/step-1.png" width="125">
+            <h5 class="text-white mt-3">Conoce c&oacute;mo se <span class="text-blue">dispersa</span> el virus</h5>
+            <h6 class="text-white">Actualmente, no existe vacuna para prevenir el contagio de <span class="text-danger">COVID-19</span>
+            </h6>
+            <p>El virus se contagia principalmente con el contacto de persona a persona, cuando las diminutas gotas que provienen de la tos o el estornudo de una persona infectada son expulsadas al exterior.</p>
+          </div>
+          <div *ngIf="modalStep == 2" class="modal-step" [@fadeInOutAnimation]>
+            <img src="assets/images/step-2.png" width="125">
+            <h5 class="text-white mt-3">Medidas para <span class="text-blue">PROTEJERTE</span> a ti mismo</h5>
+            <p>L&aacute;vate las manos con agua y jab&oacute;n durante 20 segundos. Evita tocarte la cara, en especial los ojos, nar&iacute;z y boca. Recuerda que &eacute;sta es la v&iacute;a de entrada del virus.</p>
+          </div>
+          <div *ngIf="modalStep == 3" class="modal-step" [@fadeInOutAnimation]>
+            <img src="assets/images/step-3.png" width="125">
+            <h5 class="text-white mt-3">Evita el contacto <span class="text-blue">CERCANO</span> con las personas.</h5>
+            <p>Has caso de las medidas de distanciamiento social de tu comunidad. Recuerda que esto es fundamental para acabar con esta pandemia.</p>
+
+          </div>
+          <div *ngIf="modalStep == 4" class="modal-step" [@fadeInOutAnimation]>
+            <img src="assets/images/step-4.png" width="125">
+            <h5 class="text-white mt-3">Toma medidas para <span class="text-blue">PROTEGERTE</span> a ti mismo</h5>
+            <p>
+              Cu&uacute;rete con un pañuelo nar&iacute;z y boca cuando estornudes o tosas, o con el interior de tu antebrazo.
+              L&aacute;vate las manos inmediatamente con agua y con jab&oacute;n  al menos durante 20 segundos, o aplica en tus manos gel sanitizante con cuando menos 70% de alcohol.
+            </p>
+          </div>
+          <div *ngIf="modalStep == 5" class="modal-step" [@fadeInOutAnimation]>
+            <img src="assets/images/step-5.png" width="125">
+            <h5 class="text-white mt-3">LAVA Y <span class="text-blue">DESINFECTA</span></h5>
+            <p>
+              Lava y desinfecta las superficies con las que regularmente tienes contacto. &Eacute;sto incluye mesas, perillas de puertas, interruptores de luz,
+              manijas, escritorios, tel&eacute;fonos, teclados, inodoros, lavamanos, etc.
+              Si ves una superficie sucia, l&iacute;mpiala: Usa detergente o jab&oacute;n apropiado para la desinfecci&oacute;n.
+            </p>
+          </div>
+          <div class="col-12 text-center" *ngIf="modalStep!=5">
+            <button (click)="nextStep()" class="btn btn-secondary waves-effect waves-light mb-4"><span>Siguiente
+              </span><i class="fa fa-arrow-right mr-1"></i></button>
+          </div>
+          <div class="col-12 text-center" *ngIf="modalStep==5">
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="forDontShow" #dontShow>
+                <label class="custom-control-label" for="forDontShow">No quiero ver esto de nuevo</label>
+              </div>
+            </div>
+            <button (click)="close(dontShow.checked)" class="btn btn-blue waves-effect waves-light mb-4"><i class="fas fa-times-circle mr-1"></i><span>Cerrar</span></button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+<div class="main-title">  <!-- main title -->
+  <h1 class="display-4">coronavirus-mx</h1>
+  <h2 class="text-success">Este sitio reune informaci&oacute;n la pandemia por <b>Coronavirus</b>.</h2>
+  <p>Si tienes alg&uacute;n s&iacute;ntoma: 
+    <a class="btn btn-md btn-danger waves-effect waves-light width-lg" 
+     href="tel:8000044800">Llama <i class="fas fa-phone mr-1"></i>
+    </a>
+  </p>
+  <p>Chat con Susana distancia: 
+    <a class="btn btn-md btn-danger waves-effect waves-light width-lg" 
+     href="https://api.whatsapp.com/send?phone=5586338589">WhatsApp <i class="fas fa-whatsapp mr-1"></i>
+    </a>
+  </p>
+</div>  <!-- main title END -->
+
+<div class="row">
+    <div class="col-xl-12">
+      <button type="button" class="btn btn-md btn-lighten-warning waves-effect waves-light width-lg mr-md-1 mr-0 mt-2 mb-2"
+          (click)="showModal();">Prevenci&oacute;n</button>
+      <a role="button" class="btn btn-md btn-lighten-secondary waves-effect waves-light width-lg mr-md-1 mr-0 mt-2 mb-2"
+          href="https://coronavirus.gob.mx" target="_blank" >Sitio oficial</a>
+      
+ </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-4 col-md-6 col-sm-12">
+      <div class="card-box">
+        <h3 class="header-title text-center mb-2">El virus y <span class="text-blue">YO</span></h3>
+        <div class="row">
+          <div class="col-12"> 
+          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
+            <accordion-group heading="¿Qu&eacute; son los virus y coronavirus?">
+                <p class="text-justify">Un virus es un <span class="text-pink" tooltip="Aquello que existe">ente</span> muy <span class="text-pink" tooltip="Nanoscopico, del orden de 10 a 100 nm">pequeño</span> que tiene s&oacute;lo puede reproducirse dentro de la c&eacute;lula de otro organismo vivo.</p>
+                <p class="text-justify">Coronavirus es una clase de virus que posee puntas en forma de coronas.</p>
+                <div class="text-center mb-1">
+                  <img src="assets/images/coronavirus01.png">
+                </div>
+                <p class="text-justify">
+                  Los coronavirus que pueden hospedarse en c&eacute;lulas de mam&iacute;feros se les llama Beta-Coronavirus
+                </p>
+                <p class="text-justify">
+                  En los humanos, existen algunos coronavirus (HCoV) estudiados desde 1960, todos causantes de enfermedades respiratorias:
+                </p>
+                <ul>
+                  <li>HCoV-229E</li>
+                  <li><span class="text-pink" tooltip="Es el mas com&uacute;n, y afecta principalmente a niños menores de 5 años">HCoV-OC43</span></li>
+                  <li><span class="text-pink" tooltip="Descubierto en 2004">HCoV-NL63</span></li>
+                  <li><span class="text-pink" tooltip="Descubierto en 2005">HCoV-HKU1</span></li>
+                  <li><span class="text-pink" tooltip="Descubierto en 2003, con una letalidad del 10%">SARS-CoV</span></li>
+                  <li><span class="text-pink" tooltip="Descubierto en 2012, con una letalidad del 32%">MERS-CoV</span></li>
+                  <li><span class="text-danger" tooltip="Descubierto en 2020, es el virus causante de la pandemia actual">SARS-CoV2</span></li>
+                </ul>
+            </accordion-group>       
+            <accordion-group heading="¿Cu&aacute;l es la diferencia COVID-19 y SARS-CoV2?">
+                <p class="text-justify">
+                  El 31 de diciembre de 2019, se inform&oacute; de la existencia de 27 casos de neumonia at&iacute;pica en la provincia de Wuhan en Hubei, China; cuyos pacientes iniciaron sintomatolog&iacute;a el 8 de diciembre de 2019, incluyendo 7 casos graves, con exposicio&oacute;n comu&uacute;n a un mercado de marisco, pescado y animales vivos en la ciudad de Wuhan.
+                </p>
+                <p class="text-justify">
+                  El 7 de enero de 2020, se identific&oacute; el virus causante de esa infestaci&oacute;n y lo llamaron <em>nuevo coronavirus</em> (2019-nCoV). El 11 de febrero de 2020, la Organizaci&oacute;n Mundial de la Salud (OMS) cambia el nombre temporal de 2019-nCoV por el de <span class="text-danger" tooltip="Severe Acute Respiratory Syndrome (S&iacute;ndrome Respiratorio Agudo Grave), por sus siglas en ingl&eacute;s">SARS-CoV2</span> y nombra a <span class="text-danger" tooltip="Coronavirus Infectious Disease, por sus siglas en ingl&eacute;s">COVID-19</span> como la enfermedad asociada a este virus.
+                </p>
+            </accordion-group>
+          </accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 col-sm-12">
+      <div class="card-box">
+        <h3 class="header-title text-center mb-2">El virus y <span class="text-blue">MI TRABAJO</span></h3>
+        <div class="row">
+          <div class="col-12"> 
+          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
+            <!-- <accordion-group heading="Tus derechos ante la pandemia">
+                <p class="text-success">Como trabajador</p>
+                <p class="text-success">Como empresario</p>
+            </accordion-group>       -->
+            <accordion-group heading="Me han despedido o me descansaron sin goce de sueldo">
+                <p class="text-justify">
+                  Si fuiste <span class="text-danger">DESPEDIDO</span> o te mandaron a descansar sin gose de sueldo, las <span class="text-blue">LEYES</span> te protegen.
+                </p>
+                <div class="text-center mb-1">
+                <a role="button"
+                   href="https://procuraduriadigital.stps.gob.mx/reporte-trabajador"
+                   class="btn btn-sm btn-lighten-success waves-effect waves-light"
+                   target="_blank" >
+                 PROFEDET
+                </a>
+              </div>
+            </accordion-group>
+            <accordion-group heading="Apoyo Solidario a la Palabra">
+                <p class="text-justify">
+                  Verifica si puedes acceder a este apoyo a empresas:                 
+                </p>
+                <div class="text-center mb-1">
+                  <a role="button"
+                     class="btn btn-sm btn-lighten-success waves-effect waves-light"
+                     href="https://adodigital.imss.gob.mx/creditopalabra/">RFC</a>               
+                </div>
+                <p class="text-justify">
+                  Si no fuiste acreedor al apoyo en el sitio oficial del IMSS, llama a al n&uacute;mero (800) 623-2323                 
+                </p>
+                <div class="text-center mb-1">
+                  <a role="button"
+                     class="btn btn-sm btn-lighten-success waves-effect waves-light"
+                     href="tel:8006232323">Llama<i class="fas fa-phone ml-1"></i></a>
+                </div>
+            </accordion-group>
+          </accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 col-sm-12">
+      <div class="card-box">
+        <h3 class="header-title text-center mb-2">El virus y <span class="text-blue">EL AMBIENTE</span></h3>
+        <div class="row">
+          <div class="col-12"> 
+          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
+            <accordion-group heading="En construcci&oacute;n">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>       
+            <accordion-group heading="En construcci&oacute;n">
+                <p class="text-justify">
+                  En construcci&oacute;n
+                </p>
+            </accordion-group>
+            <accordion-group heading="En construcci&oacute;n">
+                <p class="text-justify">En construcci&oacute;n</p>
+            </accordion-group>
+            <accordion-group heading="En construcci&oacute;n">
+                <p class="text-justify">En construcci&oacute;n</p>
+            </accordion-group>
+          </accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+</div> 
+
+<!-- http://harrier.nagahama-i-bio.ac.jp/dtx/SARS-CoV-2/  Repositorio de modelos de estructuras te&oacute;ricas de las prote&iacute;nas que componen al SARS-CoV2 -->
+<!--
+ <div class="row">
+    <div class="col-xl-4 col-md-6 col-sm-12">
+      <div class="card-box">
+        <h4 class="header-title mb-2">Preguntas frecuentes</h4>
+        <div class="row">
+          <div class="col-12"> 
+          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
+            <accordion-group heading="¿Qu&eacute; son los virus?">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>       
+            <accordion-group heading="¿Cu&aacute;l es la diferencia entre los t&eacute;rminos Coronavirus, COVID-19 y SARS-COV2?">
+                <p class="text-success">
+                  Coronavirus es
+                </p>
+            </accordion-group>
+            <accordion-group heading="¿Cu&aacute;l es la mejor forma de convatir un virus?">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>
+            <accordion-group heading="¿Cu&aacute;l es la mejor forma de convatir un virus?">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>
+          </accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 col-sm-12">
+      <div class="card-box">
+        <h4 class="header-title mb-2">Enlases de ayuda</h4>
+        <div class="row">
+          <div class="col-12"> 
+          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
+            <accordion-group class="text-white" heading="Art&iacute;culos cient&iacute;ficos">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>       
+            <accordion-group heading="Documentos oficiales">
+              <ul>
+                <li>
+                  <a role="button" href="http://cvoed.imss.gob.mx/wp-content/uploads/2020/02/Linemaineto-cl%C3%ADnico-COVID-19-CCINSHAE-14feb2020.pdf.pdf.pdf.pdf" target="_blank">Lineamiento para la atencio&oacute;n de pacientes por COVID-19 (PDF)</a>
+                </li>
+                <li>
+                  <a role="button" href="https://coronavirus.gob.mx/wp-content/uploads/2020/04/Documentos-Lineamientos-Reconversion-Hospitalaria.pdf" target="_blank">Lineamiento de reconversi&oacute;n hospitalaria (PDF)</a>
+                </li>
+                <li>
+                  <a role="button" href="http://dof.gob.mx/2020/CSG/CSG_300320_VES.pdf" target="_blank">Declaraci&oacute;n de la emergencia sanitaria en M&eacute;xico</a>
+                </li>
+                <li>
+                  <a role="button" href="http://www.diputados.gob.mx/LeyesBiblio/pdf/125_020719.pdf" target="_blank">Ley Federal del trabajo</a>
+                </li>
+                <li>
+                  <a role="button" href="https://www.gob.mx/cms/uploads/attachment/file/545568/PREGUNTAS_FRECUENTES_STPS-6_abril-1013.pdf" target="_blank">Preguntas frecuentes ante problemas</a>
+                </li>
+                <li>
+                  <a role="button" href="http://dof.gob.mx/2020/CSG/CSG_300320_VES.pdf" target="_blank">Declaraci&oacute;n de la emergencia sanitaria en M&eacute;xico</a>
+                </li>
+              </ul>
+
+
+
+
+
+            </accordion-group>
+            <accordion-group heading="Violencia intrafamiliar">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>
+            <accordion-group heading="Manejo del estres o ansiedad">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>
+          </accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 col-sm-12">
+      <div class="card-box">
+        <h4 class="header-title mb-2">Recursos de informaci&oacute;n</h4>
+        <div class="row">
+          <div class="col-12"> 
+          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
+            <accordion-group heading="Informaci&oacute;n general">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>       
+            <accordion-group heading="Art&iacute;culos cient&iacute;ficos">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>
+          </accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-md-6 col-sm-12">
+      <div class="card-box">
+        <h4 class="header-title mb-2">Actividades</h4>
+        <div class="row">
+          <div class="col-12"> 
+          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
+            <accordion-group heading="Escuelas en casa gratuitas">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>       
+            <accordion-group heading="Trabajo en casa">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>
+            <accordion-group heading="Para niños">
+                <p class="text-success">En construcci&oacute;n</p>
+            </accordion-group>
+          </accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<a
+                id="slider-1-slide-1-layer-4" 
+                class="rs-layer rev-btn"
+                href="http://cdc.hispace.hicloud.com/000000uo" target="_blank" rel="noopener"
+                data-type="button"
+                data-color="#205b4d"
+                data-xy="x:c;xo:190px,185px,185px,0;y:m;yo:170px,186px,165px,190px;"
+                data-text="s:15;l:17,17,17,14;fw:800;a:center;"
+                data-dim="w:155px,155px,155px,162px;h:46px;"
+                data-rsp_bd="off"
+                data-padding="t:12;r:12;b:12;l:12;"
+                data-border="bow:2px,2px,2px,2px;"
+                data-frame_0="y:50;"
+                data-frame_1="st:3030;sp:1000;"
+                data-frame_999="o:0;tp:600;e:nothing;st:w;sR:4470;"
+                data-frame_hover="c:#205b4d;bor:0px,0px,0px,0px;bos:none;bow:2px,2px,2px,2px;oX:50;oY:50;sp:100ms;e:power0.in;"
+                style="z-index:13;background:url('https://coronavirus.gob.mx/wp-content/uploads/2020/04/AG_icon_20200106.svg') no-repeat center center;background-size:contain;font-family:Montserrat;cursor:pointer;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;"
+              > 
+              </a><!--
+
+              --><a
+                id="slider-1-slide-1-layer-6" 
+                class="rs-layer rev-btn"
+                href="https://apps.apple.com/mx/app/covid-19mx/id1505632889" target="_blank" rel="noopener"
+                data-type="button"
+                data-color="#205b4d"
+                data-xy="x:c;xo:0,0,0,100px;y:m;yo:170px,185px,165px,122px;"
+                data-text="s:15;l:17,17,17,14;fw:800;a:center;"
+                data-dim="w:155px,155px,155px,162px;h:46px;"
+                data-rsp_bd="off"
+                data-padding="t:12;r:12;b:12;l:12;"
+                data-border="bow:2px,2px,2px,2px;"
+                data-frame_0="y:50;"
+                data-frame_1="st:3030;sp:1000;"
+                data-frame_999="o:0;tp:600;e:nothing;st:w;sR:4470;"
+                data-frame_hover="c:#205b4d;bor:0px,0px,0px,0px;bos:none;bow:2px,2px,2px,2px;oX:50;oY:50;sp:100ms;e:power0.in;"
+                style="z-index:12;background:url('https://coronavirus.gob.mx/wp-content/uploads/2020/04/Download_on_the_App_Store_Badge_ESMX_RGB_blk_100217.svg') no-repeat center center;background-size:contain;font-family:Montserrat;cursor:pointer;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;"
+              > 
+              </a>
+
+  
 </div>
