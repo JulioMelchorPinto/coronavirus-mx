@@ -1,10 +1,10 @@
 <div class="container-fluid">
+
   <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal"
     class="modal fade d-block" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body text-center pt-4">
-
           <div *ngIf="modalStep == 1" class="modal-step" [@fadeInOutAnimation]>
             <img src="assets/images/step-1.png" width="125">
             <h5 class="text-white mt-3">Conoce c&oacute;mo se <span class="text-blue">dispersa</span> el virus</h5>
@@ -60,144 +60,286 @@
 
 <div class="main-title">  <!-- main title -->
   <h1 class="display-4">coronavirus-mx</h1>
-  <h2 class="text-success">Este sitio reune informaci&oacute;n la pandemia por <b>Coronavirus</b>.</h2>
+  <h2 class="text-success">Este sitio reune informaci&oacute;n sobre la pandemia por <b>Coronavirus</b>.</h2>
   <p>Si tienes alg&uacute;n s&iacute;ntoma: 
-    <a class="btn btn-md btn-danger waves-effect waves-light width-lg" 
+    <a class="btn btn-md btn-lighten-danger waves-effect waves-light width-lg" 
      href="tel:8000044800">Llama <i class="fas fa-phone mr-1"></i>
     </a>
   </p>
   <p>Chat con Susana distancia: 
-    <a class="btn btn-md btn-danger waves-effect waves-light width-lg" 
-     href="https://api.whatsapp.com/send?phone=5586338589">WhatsApp <i class="fas fa-whatsapp mr-1"></i>
+    <a href="https://web.whatsapp.com/send?phone=5586338589"
+     target="_blank"><img src="assets/images/whatsapp.png">
     </a>
   </p>
 </div>  <!-- main title END -->
 
 <div class="row">
-    <div class="col-xl-12">
-      <button type="button" class="btn btn-md btn-lighten-warning waves-effect waves-light width-lg mr-md-1 mr-0 mt-2 mb-2"
-          (click)="showModal();">Prevenci&oacute;n</button>
-      <a role="button" class="btn btn-md btn-lighten-secondary waves-effect waves-light width-lg mr-md-1 mr-0 mt-2 mb-2"
-          href="https://coronavirus.gob.mx" target="_blank" >Sitio oficial</a>
+  <div class="col-xl-12">
       
- </div>
+  </div>
 </div>
 
 <div class="row">
-  <div class="col-xl-4 col-md-6 col-sm-12">
-      <div class="card-box">
-        <h3 class="header-title text-center mb-2">El virus y <span class="text-blue">YO</span></h3>
-        <div class="row">
-          <div class="col-12"> 
-          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
-            <accordion-group heading="¿Qu&eacute; son los virus y coronavirus?">
-                <p class="text-justify">Un virus es un <span class="text-pink" tooltip="Aquello que existe">ente</span> muy <span class="text-pink" tooltip="Nanoscopico, del orden de 10 a 100 nm">pequeño</span> que tiene s&oacute;lo puede reproducirse dentro de la c&eacute;lula de otro organismo vivo.</p>
-                <p class="text-justify">Coronavirus es una clase de virus que posee puntas en forma de coronas.</p>
-                <div class="text-center mb-1">
-                  <img src="assets/images/coronavirus01.png">
-                </div>
+  <div class="col-12">
+          <tabset [justified]="true">
+          <tab heading="YO">
+            <accordion [isAnimated]="true">
+              <accordion-group heading="¿Qu&eacute; son los virus y coronavirus?">
+                  <p class="text-justify">Un virus es un <span class="text-pink" tooltip="Aquello que existe">ente</span> muy <span class="text-pink" tooltip="Nanoscopico, del orden de 10 a 100 nm">pequeño</span> que tiene s&oacute;lo puede reproducirse dentro de la c&eacute;lula de otro organismo vivo.</p>
+                  <p class="text-justify">Coronavirus es una clase de virus que posee puntas en forma de coronas.</p>
+                  <div class="text-center mb-1">
+                    <img src="assets/images/coronavirus01.png">
+                  </div>
+                  <p class="text-justify">
+                    Los coronavirus que pueden hospedarse en c&eacute;lulas de mam&iacute;feros se les llama Beta-Coronavirus
+                  </p>
+                  <p class="text-justify">
+                    En los humanos, existen algunos coronavirus (HCoV) estudiados desde 1960, todos causantes de enfermedades respiratorias:
+                  </p>
+                  <ul>
+                    <li>HCoV-229E</li>
+                    <li><span class="text-pink" tooltip="Es el mas com&uacute;n, y afecta principalmente a niños menores de 5 años">HCoV-OC43</span></li>
+                    <li><span class="text-pink" tooltip="Descubierto en 2004">HCoV-NL63</span></li>
+                    <li><span class="text-pink" tooltip="Descubierto en 2005">HCoV-HKU1</span></li>
+                    <li><span class="text-pink" tooltip="Descubierto en 2003, con una letalidad del 10%">SARS-CoV</span></li>
+                    <li><span class="text-pink" tooltip="Descubierto en 2012, con una letalidad del 32%">MERS-CoV</span></li>
+                    <li><span class="text-danger" tooltip="Descubierto en 2020, es el virus causante de la pandemia actual">SARS-CoV2</span></li>
+                  </ul>
+              </accordion-group>       
+              <accordion-group heading="¿Cu&aacute;l es la diferencia COVID-19 y SARS-CoV2?">
+                  <p class="text-justify">
+                    <ng-template #popTemplateWuhan>Aqu&iacute; est&aacute;: 
+                      <div [innerHtml]="html_popover_wuhan"></div>
+                    </ng-template>
+                    El 31 de diciembre de 2019, se inform&oacute; de la existencia de 27 casos de neumon&iacute;a at&iacute;pica en la provincia de <span class="text-pink" [popover]="popTemplateWuhan" [outsideClick]="true">Wuhan</span> en Hubei, China; cuyos pacientes iniciaron sintomatolog&iacute;a el 8 de diciembre de 2019, incluyendo 7 casos graves, con exposici&oacute;n com&uacute;n a un mercado de marisco, pescado y animales vivos en la ciudad de Wuhan.
+                  </p>
+                  <p class="text-justify">
+                    El 7 de enero de 2020, se identific&oacute; el virus causante de esa infestaci&oacute;n y lo llamaron <span class="text-pink" tooltip="Nuevo coronavirus o Novel-CoV">2019-nCoV</span>. El 11 de febrero de 2020, la <span class="text-pink" tooltip="Organizaci&oacute;n Mundial de la Salud">OMS</span> cambia el nombre temporal de 2019-nCoV por el de <span class="text-danger" tooltip="Severe Acute Respiratory Syndrome (S&iacute;ndrome Respiratorio Agudo Grave), por sus siglas en ingl&eacute;s">SARS-CoV2</span> y nombra a <span class="text-danger" tooltip="Coronavirus Infectious Disease, por sus siglas en ingl&eacute;s">COVID-19</span> como la enfermedad asociada a este virus.
+                  </p>
+              </accordion-group>
+              <accordion-group heading="¿C&oacute;mo prevenir el contagio?">
+                 <p class="text-justify">
+                   Sigue las recomendaciones de higiene y sana distancia de tu localidad: 
+                 </p>
+                 <div class="text-center mb-1">
+                    <button type="button"
+                            (click)="showModal()"
+                            class="btn btn-sm btn-lighten-warning waves-effect waves-light">Prevenci&oacute;n
+                    </button>
+                  </div>
+              </accordion-group>
+            </accordion>          
+          </tab>
+          <tab heading="MI COMUNIDAD">
+            <accordion [isAnimated]="true">
+              <accordion-group heading="Fake news en tiempos del Coronavirus">
                 <p class="text-justify">
-                  Los coronavirus que pueden hospedarse en c&eacute;lulas de mam&iacute;feros se les llama Beta-Coronavirus
-                </p>
-                <p class="text-justify">
-                  En los humanos, existen algunos coronavirus (HCoV) estudiados desde 1960, todos causantes de enfermedades respiratorias:
-                </p>
-                <ul>
-                  <li>HCoV-229E</li>
-                  <li><span class="text-pink" tooltip="Es el mas com&uacute;n, y afecta principalmente a niños menores de 5 años">HCoV-OC43</span></li>
-                  <li><span class="text-pink" tooltip="Descubierto en 2004">HCoV-NL63</span></li>
-                  <li><span class="text-pink" tooltip="Descubierto en 2005">HCoV-HKU1</span></li>
-                  <li><span class="text-pink" tooltip="Descubierto en 2003, con una letalidad del 10%">SARS-CoV</span></li>
-                  <li><span class="text-pink" tooltip="Descubierto en 2012, con una letalidad del 32%">MERS-CoV</span></li>
-                  <li><span class="text-danger" tooltip="Descubierto en 2020, es el virus causante de la pandemia actual">SARS-CoV2</span></li>
-                </ul>
-            </accordion-group>       
-            <accordion-group heading="¿Cu&aacute;l es la diferencia COVID-19 y SARS-CoV2?">
-                <p class="text-justify">
-                  El 31 de diciembre de 2019, se inform&oacute; de la existencia de 27 casos de neumonia at&iacute;pica en la provincia de Wuhan en Hubei, China; cuyos pacientes iniciaron sintomatolog&iacute;a el 8 de diciembre de 2019, incluyendo 7 casos graves, con exposicio&oacute;n comu&uacute;n a un mercado de marisco, pescado y animales vivos en la ciudad de Wuhan.
-                </p>
-                <p class="text-justify">
-                  El 7 de enero de 2020, se identific&oacute; el virus causante de esa infestaci&oacute;n y lo llamaron <em>nuevo coronavirus</em> (2019-nCoV). El 11 de febrero de 2020, la Organizaci&oacute;n Mundial de la Salud (OMS) cambia el nombre temporal de 2019-nCoV por el de <span class="text-danger" tooltip="Severe Acute Respiratory Syndrome (S&iacute;ndrome Respiratorio Agudo Grave), por sus siglas en ingl&eacute;s">SARS-CoV2</span> y nombra a <span class="text-danger" tooltip="Coronavirus Infectious Disease, por sus siglas en ingl&eacute;s">COVID-19</span> como la enfermedad asociada a este virus.
-                </p>
-            </accordion-group>
-          </accordion>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-4 col-md-6 col-sm-12">
-      <div class="card-box">
-        <h3 class="header-title text-center mb-2">El virus y <span class="text-blue">MI TRABAJO</span></h3>
-        <div class="row">
-          <div class="col-12"> 
-          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
-            <!-- <accordion-group heading="Tus derechos ante la pandemia">
-                <p class="text-success">Como trabajador</p>
-                <p class="text-success">Como empresario</p>
-            </accordion-group>       -->
-            <accordion-group heading="Me han despedido o me descansaron sin goce de sueldo">
-                <p class="text-justify">
-                  Si fuiste <span class="text-danger">DESPEDIDO</span> o te mandaron a descansar sin gose de sueldo, las <span class="text-blue">LEYES</span> te protegen.
-                </p>
-                <div class="text-center mb-1">
-                <a role="button"
-                   href="https://procuraduriadigital.stps.gob.mx/reporte-trabajador"
-                   class="btn btn-sm btn-lighten-success waves-effect waves-light"
-                   target="_blank" >
-                 PROFEDET
-                </a>
-              </div>
-            </accordion-group>
-            <accordion-group heading="Apoyo Solidario a la Palabra">
-                <p class="text-justify">
-                  Verifica si puedes acceder a este apoyo a empresas:                 
-                </p>
-                <div class="text-center mb-1">
-                  <a role="button"
-                     class="btn btn-sm btn-lighten-success waves-effect waves-light"
-                     href="https://adodigital.imss.gob.mx/creditopalabra/">RFC</a>               
-                </div>
-                <p class="text-justify">
-                  Si no fuiste acreedor al apoyo en el sitio oficial del IMSS, llama a al n&uacute;mero (800) 623-2323                 
-                </p>
-                <div class="text-center mb-1">
-                  <a role="button"
-                     class="btn btn-sm btn-lighten-success waves-effect waves-light"
-                     href="tel:8006232323">Llama<i class="fas fa-phone ml-1"></i></a>
-                </div>
-            </accordion-group>
-          </accordion>
-          </div>
-        </div>
-      </div>
-    </div>
+                        
+                  </p>
+                    <youtube-player videoId="_f6BvSNZLLs"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>
+              </accordion-group>
+            </accordion>
+          </tab>
+          <tab heading="MI TRABAJO">
+            <accordion [isAnimated]="true">
+              <accordion-group heading="Me han despedido o me descansaron sin goce de sueldo">
+                  <p class="text-justify">
+                    Si fuiste <span class="text-danger">DESPEDIDO</span> o te mandaron a descansar sin gose de sueldo, las <span class="text-blue">LEYES</span> te protegen.
+                  </p>
+                  <div class="text-center mb-1">
+                    <a role="button"
+                       href="https://procuraduriadigital.stps.gob.mx/reporte-trabajador"
+                       class="btn btn-sm btn-lighten-success waves-effect waves-light"
+                       target="_blank" >
+                     PROFEDET
+                    </a>
+                  </div>
+              </accordion-group>
+              <accordion-group heading="Apoyo Solidario a la Palabra">
+                  <p class="text-justify">
+                    Verifica si puedes acceder a este apoyo a empresas:                 
+                  </p>
+                  <div class="text-center mb-1">
+                    <a role="button"
+                       class="btn btn-sm btn-lighten-success waves-effect waves-light"
+                       href="https://adodigital.imss.gob.mx/creditopalabra/">RFC</a>               
+                  </div>
+                  <p class="text-justify">
+                    Si no fuiste acreedor al apoyo en el sitio oficial del IMSS, llama a al n&uacute;mero (800) 623-2323                 
+                  </p>
+                  <div class="text-center mb-1">
+                    <a role="button"
+                       class="btn btn-sm btn-lighten-success waves-effect waves-light"
+                       href="tel:8006232323">Llama<i class="fas fa-phone ml-1"></i></a>
+                  </div>
+              </accordion-group>
+              <accordion-group heading="Video - Los alcances del plan de rescate econ&oacute;mico en M&eacute;xico por COVID-19">
+                  <p class="text-justify">
+                      
+                  </p>    
+                  <youtube-player videoId="LqyBm4iLz58"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>          
+              </accordion-group>
 
-    <div class="col-xl-4 col-md-6 col-sm-12">
-      <div class="card-box">
-        <h3 class="header-title text-center mb-2">El virus y <span class="text-blue">EL AMBIENTE</span></h3>
-        <div class="row">
-          <div class="col-12"> 
-          <accordion class="custom-accordion mb-1 mt-1" [isAnimated]="true">
-            <accordion-group heading="En construcci&oacute;n">
-                <p class="text-success">En construcci&oacute;n</p>
-            </accordion-group>       
-            <accordion-group heading="En construcci&oacute;n">
-                <p class="text-justify">
-                  En construcci&oacute;n
-                </p>
-            </accordion-group>
-            <accordion-group heading="En construcci&oacute;n">
-                <p class="text-justify">En construcci&oacute;n</p>
-            </accordion-group>
-            <accordion-group heading="En construcci&oacute;n">
-                <p class="text-justify">En construcci&oacute;n</p>
-            </accordion-group>
-          </accordion>
-          </div>
-        </div>
-      </div>
-    </div>
-</div> 
+
+            </accordion>
+          </tab>
+          <tab heading="MI PA&Iacute;S">
+            <accordion [isAnimated]="true">
+              <accordion-group heading="Datos en M&eacute;xico">
+                  <p class="text-justify">
+                    Información del Sistema de Vigilancia Epidemiol&oacute;gica de Enfermedades Respiratoria Viral recopilada de las 475 <span class="text-pink" tooltip="Unidades Monitoras de Enfermedad Respiratoria-viral">USMER</span> en todo el país de todo el <span class="text-pink" tooltip="IMSS, ISSSTE, SEDENA, SEMAR, etc.)">sector salud</span>.
+                  </p>
+                  <div class="text-center mb-1">
+                    <a role="button"
+                       href="http://187.191.75.115/gobmx/salud/datos_abiertos/datos_abiertos_covid19.zip"
+                       class="btn btn-sm btn-lighten-success waves-effect waves-light mr-2 ml-2"> Casos diarios por estado (.ZIP)
+                    </a>
+                    <a role="button"
+                       href="http://187.191.75.115/gobmx/salud/datos_abiertos/diccionario_datos_covid19.zip"
+                       class="btn btn-sm btn-lighten-success waves-effect waves-light mr-2 ml-2"> Diccionario de datos (.ZIP)
+                    </a>
+                  </div>
+              </accordion-group>
+              <accordion-group heading="Reporte Comunitario de Mobilidad en M&eacute;xico">
+                  <p class="text-justify">
+                    Reporte preparado por Google con base en los registros de localizaci&oacute;n y tr&aacute;fico de dispositivos con cuentas de Google activas. Este reporte incluye categor&iacute;as de movilidad como visitas a farmacias, tiendas y supermercados, parques, lugar de trabajo, etc.
+                  </p>
+                  <div class="text-center mb-1">
+                    <a role="button"
+                       href="https://www.gstatic.com/covid19/mobility/2020-04-17_MX_Mobility_Report_en.pdf"
+                       class="btn btn-sm btn-lighten-success waves-effect waves-light mr-2 ml-2"> Reporte (.PDF)
+                    </a>               
+                  </div>
+              </accordion-group>
+
+
+
+
+              <accordion-group heading="Video - La ca&iacute;da del precio del petr&oacute;leo por COVID-19">
+                  <p class="text-justify">
+                         
+                  </p>
+                    <youtube-player videoId="Jg81_XLpLgY"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>   
+              </accordion-group>
+
+              <accordion-group heading="Video - Residuos hospitalarios efecto colateral del COVID-19">
+                  <p class="text-justify">
+                        La doctora Alethia V&aacute;zquez Morillas, investigadora de la UAM, Unidad Azcapotzalco refiere a los residuos hospitalarios generados por la contingencia del COVID-19 como una fuerte presi&oacute;n a las instituciones de salud debido a la capacidad de infraestructura y equipamiento. 
+                  </p>
+                    <youtube-player videoId="evTh8Alh3mE"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>   
+              </accordion-group>
+              <accordion-group heading="Video - Hospital covid-19 en Centro Citibanamex operar&aacute; a partir del 1 de Mayo: UNAM">
+                  <p class="text-justify">
+                        
+                  </p>
+                    <youtube-player videoId="CYeS8rWKMfw"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>   
+              </accordion-group>
+            </accordion>
+          </tab>
+          <tab heading="EL AMBIENTE">
+            <accordion [isAnimated]="true">
+              <accordion-group heading="">
+                  <p class="text-justify">
+                    
+                  </p>
+              </accordion-group>
+              <accordion-group heading="">
+                  <p class="text-justify">
+                                   
+                  </p>            
+              </accordion-group>
+            </accordion>
+          </tab>
+          <tab heading="LA CIENCIA">
+            <accordion [isAnimated]="true">
+              <accordion-group heading="Video - La COVID-19: ¿qu&eacute; es y qu&eacute; debemos hacer?">
+                  <p class="text-justify">
+                    
+                  </p>
+                  <youtube-player videoId="RKdGA5e3b_g"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>    
+              </accordion-group>
+              <accordion-group heading="Inicia en M&eacute;xico la Fase 3 de emergencia sanitaria por la COVID-19">
+                  <p class="text-justify">
+                      
+                  </p>    
+                  <youtube-player videoId="Di-ylWsg0fc"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>          
+              </accordion-group>
+              <accordion-group heading="Video - Infecci&oacute;n Respiratoria Aguda (IRA): COVID-19">
+                  <p class="text-justify">
+                      
+                  </p>    
+                  <youtube-player videoId="CvYYSb3VBVU"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>          
+              </accordion-group>
+              <accordion-group heading="Video - COVID-19 - Consulta directa">
+                  <p class="text-justify">
+                      
+                  </p>    
+                  <youtube-player videoId="EJ-4ZQeJtD4"
+                      suggestedQuality="highres"
+                      [height]=""
+                      [width]=""
+                      [startSeconds]=""
+                      [endSeconds]="">
+                    </youtube-player>          
+              </accordion-group>
+              
+              
+            </accordion>
+          </tab>
+          </tabset>
+  </div>
+</div>
+
+
+
 
 <!-- http://harrier.nagahama-i-bio.ac.jp/dtx/SARS-CoV-2/  Repositorio de modelos de estructuras te&oacute;ricas de las prote&iacute;nas que componen al SARS-CoV2 -->
 <!--
@@ -355,6 +497,3 @@
                 style="z-index:12;background:url('https://coronavirus.gob.mx/wp-content/uploads/2020/04/Download_on_the_App_Store_Badge_ESMX_RGB_blk_100217.svg') no-repeat center center;background-size:contain;font-family:Montserrat;cursor:pointer;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;"
               > 
               </a>
-
-  
-</div>
